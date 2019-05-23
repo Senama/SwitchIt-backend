@@ -26,9 +26,7 @@ app.use((err, req, res, next) => {
   res.status(400).json({error: err.toString()});
 });
 
-app.listen(process.env.PORT || port, ()=>{
-  console.log(`listening at port ${port}`)
-} )
+
 
 
 // -------- ROUTES
@@ -37,4 +35,6 @@ app.get('/', (req, res) => {
 })
 
 
-
+app.listen(process.env.PORT || port, ()=>{
+  console.log(`listening at port ${port}`)
+} )
