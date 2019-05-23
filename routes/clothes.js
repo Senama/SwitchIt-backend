@@ -5,7 +5,7 @@ const PicturesServices=require('../services/uploadpics')
 
 
 //GET all pics
-pictureRouter.get('/pics', (req, res, next) => {  
+pictureRouter.get('/', (req, res, next) => {  
   PicturesServices.renderpics()
     .then(data => {
       res.json(data);
@@ -16,7 +16,7 @@ pictureRouter.get('/pics', (req, res, next) => {
 });
 
 //post new pic
-pictureRouter.post('/newpic', (req, res, next) => {
+pictureRouter.post('/', (req, res, next) => {
   const {category,style,color,season,user_id,img_url} = req.body;
   PicturesServices.create(category,style,color,season,user_id,img_url)
     .then(data => {
@@ -73,22 +73,5 @@ pictureRouter.get('/season', (req, res, next) => {
       next(err);
     })
 });
-
-
-
-//GET all style by category where bottom or top
-//params
-pictureRouter.get('/style/:style', (req, res, next) => {  
-  const {style}=req.params;
-  PicturesServices.renderbottomsbycategory(style)
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      next(err);
-    })
-});
-
-
 
 module.exports=pictureRouter;
