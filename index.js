@@ -6,7 +6,7 @@ const cors = require('cors');
 
 
 //define routes
-const pictureRouter = require('./routes/uploadpics');
+const clothesRouter = require('./routes/clothes');
 
 
 // -------- MIDDLEWARE
@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 
 
 //routes
-app.use('/uploadpics', pictureRouter);
+app.use('/clothes', clothesRouter); 
 
 
 app.use((err, req, res, next) => {
