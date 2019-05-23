@@ -47,6 +47,16 @@ PicturesServices.renderseason= () => {
 }
 
 
+//GET all style by category bottom where bottom or top
+//params
+PicturesServices.renderbottomsbycategory= (category) => {
+  const sql = `SELECT style 
+  from clothes 
+  where category =$[category]
+  GROUP BY style`
+  return db.any(sql, {category});
+}
+
 
 
 module.exports = PicturesServices;

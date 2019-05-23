@@ -74,4 +74,21 @@ pictureRouter.get('/season', (req, res, next) => {
     })
 });
 
+
+
+//GET all style by category where bottom or top
+//params
+pictureRouter.get('/style/:style', (req, res, next) => {  
+  const {style}=req.params;
+  PicturesServices.renderbottomsbycategory(style)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+
+
 module.exports=pictureRouter;
