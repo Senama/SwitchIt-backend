@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:local": "$(npm bin)/ nodemon index.js &",
+    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | $(npm bin)/coveralls",
     "seed:local": "cat seed.sql | psql",
     "seed": "cat seed.sql | heroku pg:psql",
     "start": "nodemon index.js"
