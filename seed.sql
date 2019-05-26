@@ -1,7 +1,13 @@
-DROP DATABASE IF EXISTS switchit;
-CREATE DATABASE  switchit;
+-- DROP DATABASE IF EXISTS switchit;
+-- CREATE DATABASE  switchit;
 
-\c switchit;
+-- \c switchit;
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS clothes;
+DROP TABLE IF EXISTS favorites;
+DROP TABLE IF EXISTS outfits;
+
 
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
