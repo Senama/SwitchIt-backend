@@ -26,7 +26,8 @@
     "express": "^4.16.4",
     "firebase": "^6.0.2",
     "jest": "^24.8.0",
-    "pg-promise": "^8.7.2"
+    "pg-promise": "^8.7.2",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "coveralls": "^3.0.3"

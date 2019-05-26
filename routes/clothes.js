@@ -31,47 +31,47 @@ pictureRouter.post('/', (req, res, next) => {
 
 //--------------
 //GET all category
-pictureRouter.get('/category', (req, res, next) => {  
-  PicturesServices.rendercategory()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      next(err);
-    })
-});
+// pictureRouter.get('/category', (req, res, next) => {  
+//   PicturesServices.rendercategory()
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       next(err);
+//     })
+// });
 
 //GET all color
-pictureRouter.get('/color', (req, res, next) => {  
-  PicturesServices.rendercolor()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      next(err);
-    })
-});
+// pictureRouter.get('/color', (req, res, next) => {  
+//   PicturesServices.rendercolor()
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       next(err);
+//     })
+// });
 
 //GET all style
-pictureRouter.get('/style', (req, res, next) => {  
-  PicturesServices.renderstyle()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      next(err);
-    })
-});
+// pictureRouter.get('/style', (req, res, next) => {  
+//   PicturesServices.renderstyle()
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       next(err);
+//     })
+// });
 
 //GET all season
-pictureRouter.get('/season', (req, res, next) => {  
-  PicturesServices.renderseason()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      next(err);
-    })
-});
+// pictureRouter.get('/season', (req, res, next) => {  
+//   PicturesServices.renderseason()
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       next(err);
+//     })
+// });
 
 module.exports=pictureRouter;
