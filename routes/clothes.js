@@ -1,12 +1,12 @@
 const express=require('express')
-const pictureRouter=express.Router();
-const PicturesServices=require('../services/uploadpics')
+const clothesRouter=express.Router();
+const ClothesServices=require('../services/clothes')
 
 
 
 //GET all pics
-pictureRouter.get('/', (req, res, next) => {  
-  PicturesServices.renderpics()
+clothesRouter.get('/', (req, res, next) => {  
+  ClothesServices.renderpics()
     .then(data => {
       res.json(data);
     })
@@ -16,9 +16,9 @@ pictureRouter.get('/', (req, res, next) => {
 });
 
 //post new pic
-pictureRouter.post('/', (req, res, next) => {
+clothesRouter.post('/newpic', (req, res, next) => {
   const {category,style,color,season,user_id,img_url} = req.body;
-  PicturesServices.create(category,style,color,season,user_id,img_url)
+  ClothesServices.create(category,style,color,season,user_id,img_url)
     .then(data => {
       res.json({success: `Upoaded pic successfully`});
     })
@@ -44,5 +44,66 @@ pictureRouter.ootd = (req, res)=>{
     res.json(error)
   })
 }
+//--------------
+//GET all category
+clothesRouter.get('/category', (req, res, next) => {  
+  ClothesServices.rendercategory()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
 
-module.exports=pictureRouter;
+//GET all color
+clothesRouter.get('/color', (req, res, next) => {  
+  ClothesServices.rendercolor()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//GET all style
+clothesRouter.get('/style', (req, res, next) => {  
+  ClothesServices.renderstyle()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//GET all season
+clothesRouter.get('/season', (req, res, next) => {  
+  ClothesServices.renderseason()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+
+
+//GET all style by category where bottom or top
+//params
+clothesRouter.get('/style/:category', (req, res, next) => {  
+  const {category}=req.params;
+  ClothesServices.renderbottomsbycategory(category)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+
+
+module.exports=clothesRouter;
