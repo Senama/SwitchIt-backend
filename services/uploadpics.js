@@ -58,5 +58,13 @@ PicturesServices.renderbottomsbycategory= (category) => {
 }
 
 
+PicturesServices.createOotd = (img, style, stamp)=>{
+  const sql =`INSERT INTO
+  ootd (img, style, stamp)
+  VALUES ($[img], $[style], $[stamp])`
+  return db.none(sql, {img, style, stamp})
+}
+
+
 
 module.exports = PicturesServices;

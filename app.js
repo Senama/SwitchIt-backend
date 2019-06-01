@@ -34,4 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', clothesRouter)
+
+app.post('/ootd', clothesRouter.ootd)
+
 module.exports={app}
