@@ -91,4 +91,43 @@ clothesRouter.get('/style/:category', (req, res, next) => {
 
 
 
+// --------------------FOR FILTERING -------------------
+
+//GET all style by a particular type
+clothesRouter.get('/:style', (req, res) => {  
+  const {style}=req.params;
+  ClothesServices.renderStyleType(style)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//GET all by a specific color 
+clothesRouter.get('/color/:color', (req, res) => {  
+  const {color}=req.params;
+  ClothesServices.renderColorType(color)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+//GET all by a specific season
+clothesRouter.get('/fire/seasontype', (req, res) => {  
+  const {season}=req.body;
+  console.log('seasons',season)
+  ClothesServices.renderSeasonType(season)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
 module.exports=clothesRouter;
