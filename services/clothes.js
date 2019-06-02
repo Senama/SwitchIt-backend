@@ -57,5 +57,31 @@ ClothesServices.renderbottomsbycategory= (category) => {
 }
 
 
+// -------------FOR FILTERING-----------------
+
+//GET all style by a particular type
+ClothesServices.renderStyleType= (style) => {
+  const sql = `SELECT * 
+  FROM clothes 
+  WHERE style=$[style]`
+  return db.any(sql, {style});
+}
+
+//GET all by a specific color 
+ClothesServices.renderColorType= (color) => {
+  const sql = `SELECT * 
+  FROM clothes 
+  WHERE color=$[color]`
+  return db.any(sql, {color});
+}
+
+//GET all by a specific season
+ClothesServices.renderSeasonType= (season) => {
+  const sql = `SELECT * 
+  FROM clothes 
+  WHERE season=$[season]`
+  return db.any(sql, {season});
+}
+
 
 module.exports = ClothesServices;
