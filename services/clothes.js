@@ -69,20 +69,28 @@ ClothesServices.renderStyleType= (style) => {
 
 
 //GET all by a specific color 
-ClothesServices.renderColorType= (color) => {
-  const sql = `SELECT * 
+ClothesServices.renderColorType= (category,style,color) => {
+  console.log('colors',color)
+  console.log('category',category)
+  const sql = `
+  SELECT * 
   FROM clothes 
-  WHERE color=$[color]`
-  return db.any(sql, {color});
+  WHERE category=$[category]
+  AND style=$[style]
+  AND color=$[color]`
+  return db.any(sql, {category,style,color});
 }
 
+
 //GET all by a specific season
-ClothesServices.renderSeasonType= (season) => {
+ClothesServices.renderSeasonType= (category,style,color,season) => {
   console.log('SEASON', season)
-  const sql = `SELECT * 
-  FROM clothes 
-  WHERE season=$[season]`
-  return db.any(sql, {season});
+  const sql = `SELECT * FROM clothes
+  WHERE category=$[category]
+  AND style=$[style]
+  AND color=$[color]
+  AND season=$[season]`
+  return db.any(sql, {category,style,color,season});
 }
 
 
