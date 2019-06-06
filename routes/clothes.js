@@ -4,6 +4,8 @@ const ClothesServices=require('../services/clothes')
 
 
 
+
+
 //GET all pics
 clothesRouter.get('/', (req, res, next) => {  
   ClothesServices.renderpics()
@@ -107,10 +109,9 @@ clothesRouter.get('/:style', (req, res) => {
 });
 
 //GET all by a specific color 
-clothesRouter.get('/color/:color', (req, res) => {  
-  const {color}=req.params;
-  console.log('c', color)
-  ClothesServices.renderColorType(color)
+clothesRouter.get('/color/:category/:style/:color', (req, res) => {  
+  const {category,style,color}=req.params;
+  ClothesServices.renderColorType(category,style,color)
     .then(data => {
       res.json(data);
     })
@@ -119,11 +120,10 @@ clothesRouter.get('/color/:color', (req, res) => {
     })
 });
 
-//GET all by a specific season
-clothesRouter.get('/season/:season', (req, res) => {  
-  const {season}=req.params;
-  console.log('seasons!!!',season)
-  ClothesServices.renderSeasonType(season)
+//GET with a specific season and all filtered
+clothesRouter.get('/season/:category/:style/:color/:season', (req, res) => {  
+  const {category,style,color,season}=req.params;
+  ClothesServices.renderSeasonType(category,style,color,season)
     .then(data => {
       res.json(data);
     })
@@ -131,5 +131,4 @@ clothesRouter.get('/season/:season', (req, res) => {
       next(err);
     })
 });
-
 module.exports=clothesRouter;
