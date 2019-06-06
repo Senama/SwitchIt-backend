@@ -19,34 +19,34 @@ ClothesServices.create = (category,style,color,season,user_id,img_url) => {
 }
 
 //--------------
-//GET all category
-ClothesServices.rendercategory= () => {
-  const sql = `SELECT category
-  FROM clothes
-  GROUP BY clothes.category`
-  return db.any(sql, {});
-}
-//GET all color
-ClothesServices.rendercolor= () => {
-  const sql = `SELECT color
-  FROM clothes
-  GROUP BY clothes.color`
-  return db.any(sql, {});
-}
-//GET all style
-ClothesServices.renderstyle= () => {
-  const sql = `SELECT style
-  FROM clothes
-  GROUP BY clothes.style`
-  return db.any(sql, {});
-}
-//GET all season
-ClothesServices.renderseason= () => {
-  const sql = `SELECT season
-  FROM clothes
-  GROUP BY clothes.season`
-  return db.any(sql, {});
-}
+// //GET all category
+// ClothesServices.rendercategory= () => {
+//   const sql = `SELECT category
+//   FROM clothes
+//   GROUP BY clothes.category`
+//   return db.any(sql, {});
+// }
+// //GET all color
+// ClothesServices.rendercolor= () => {
+//   const sql = `SELECT color
+//   FROM clothes
+//   GROUP BY clothes.color`
+//   return db.any(sql, {});
+// }
+// //GET all style
+// ClothesServices.renderstyle= () => {
+//   const sql = `SELECT style
+//   FROM clothes
+//   GROUP BY clothes.style`
+//   return db.any(sql, {});
+// }
+// //GET all season
+// ClothesServices.renderseason= () => {
+//   const sql = `SELECT season
+//   FROM clothes
+//   GROUP BY clothes.season`
+//   return db.any(sql, {});
+// }
 
 
 //GET all style by category bottom where bottom or top
@@ -66,6 +66,42 @@ ClothesServices.createOotd = (clothes_id, nickname, stamp)=>{
   return db.none(sql, {clothes_id, nickname, stamp})
 }
 
+
+
+// -------------FOR FILTERING-----------------
+//GET all by a specific style  
+ClothesServices.renderStyleType= (style) => {
+  const sql = `SELECT * 
+  FROM clothes 
+  WHERE style=$[style]`
+  return db.any(sql, {style});
+}
+
+
+//GET all by a specific color 
+ClothesServices.renderColorType= (category,style,color) => {
+  console.log('colors',color)
+  console.log('category',category)
+  const sql = `
+  SELECT * 
+  FROM clothes 
+  WHERE category=$[category]
+  AND style=$[style]
+  AND color=$[color]`
+  return db.any(sql, {category,style,color});
+}
+
+
+//GET all by a specific season
+ClothesServices.renderSeasonType= (category,style,color,season) => {
+  console.log('SEASON', season)
+  const sql = `SELECT * FROM clothes
+  WHERE category=$[category]
+  AND style=$[style]
+  AND color=$[color]
+  AND season=$[season]`
+  return db.any(sql, {category,style,color,season});
+}
 
 
 module.exports = ClothesServices;
