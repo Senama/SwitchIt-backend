@@ -30,12 +30,12 @@ clothesRouter.post('/newpic', (req, res, next) => {
 
 
 //--------------------------------------- OOTD
-pictureRouter.ootd = (req, res)=>{
-  const {img, style, stamp} = req.body;
-  console.log('img:', img)
-  console.log('style:', style)
+clothesRouter.ootd = (req, res)=>{
+  const {clothes_id, nickname, stamp} = req.body;
+  console.log('img:', clothes_id)
+  console.log('style:', nickname)
   console.log('stamp:', stamp)
-  PicturesServices.createOotd(img, style, stamp)
+  ClothesServices.createOotd(clothes_id, nickname, stamp)
   .then(data =>{
     console.log(data)
     res.json('ootd saved')
@@ -44,6 +44,8 @@ pictureRouter.ootd = (req, res)=>{
     res.json(error)
   })
 }
+
+
 //--------------
 //GET all category
 clothesRouter.get('/category', (req, res, next) => {  

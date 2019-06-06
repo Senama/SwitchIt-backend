@@ -44,8 +44,8 @@ CREATE TABLE outfits (
 
 CREATE TABLE ootd(
   id SERIAL PRIMARY KEY,
-  img VARCHAR NOT NULL,
-  style VARCHAR NOT NULL,
+  clothes_id INT REFERENCES clothes (id),
+  nickname VARCHAR NOT NULL,
   stamp VARCHAR NOT NULL
 );
 

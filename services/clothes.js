@@ -1,6 +1,8 @@
 const {db} = require('./dbConnect');
 const ClothesServices = {};
 
+ClothesServices.sum = (a, b) => a + b;
+
 
 //GET all pics
 ClothesServices.renderpics= () => {
@@ -57,11 +59,11 @@ ClothesServices.renderbottomsbycategory= (category) => {
 }
 
 
-PicturesServices.createOotd = (img, style, stamp)=>{
+ClothesServices.createOotd = (clothes_id, nickname, stamp)=>{
   const sql =`INSERT INTO
-  ootd (img, style, stamp)
-  VALUES ($[img], $[style], $[stamp])`
-  return db.none(sql, {img, style, stamp})
+  ootd (clothes_id, nickname, stamp)
+  VALUES ($[clothes_id], $[nickname], $[stamp])`
+  return db.none(sql, {clothes_id, nickname, stamp})
 }
 
 
