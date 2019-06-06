@@ -120,17 +120,7 @@ clothesRouter.get('/color/:category/:style/:color', (req, res) => {
     })
 });
 
-//GET all by a specific season
-// clothesRouter.get('/season/:category/:style/:color/:season', (req, res) => {  
-//   const {category,style,color,season}=req.params;
-//   ClothesServices.renderSeasonType(category,style,color,season)
-//     .then(data => {
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
+//GET with a specific season and all filtered
 clothesRouter.get('/season/:category/:style/:color/:season', (req, res) => {  
   const {category,style,color,season}=req.params;
   ClothesServices.renderSeasonType(category,style,color,season)
