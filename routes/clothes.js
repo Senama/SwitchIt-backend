@@ -32,6 +32,55 @@ clothesRouter.post('/newpic', (req, res, next) => {
 });
 
 
+//--------------------------------------- OOTD
+clothesRouter.ootd = (req, res)=>{
+  const {clothes_id, nickname, stamp} = req.body;
+  console.log('clothes_id:', clothes_id)
+  console.log('nickname:', nickname)
+  console.log('stamp:', stamp)
+  ClothesServices.createOotd(clothes_id, nickname, stamp)
+  .then(data =>{
+    console.log(data)
+    res.json('ootd saved')
+  })
+  .catch(error=>{
+    res.json(error)
+  })
+}
+
+
+clothesRouter.put('/update', (req, res) => {
+  const {clothes_id,stamp, nickname} = req.body;
+  ClothesServices.updateOotd(clothes_id, stamp, nickname)
+  .then(() => {
+    res.json({success:`${clothes_id} time updated too: ${stamp}`});
+  })
+    .catch(err => {
+      res.json(err.toString());
+    })
+});
+
+clothesRouter.get('/read', (req, res) => {  
+  const {nickname}=req.body;
+  ClothesServices.readOotd(nickname)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.json(err)
+    })
+});
+
+clothesRouter.get('/readAll', (req, res) => {  
+  ClothesServices.readAllOotd()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.json(err)
+    })
+});
+
 //--------------
 // //GET all category
 // clothesRouter.get('/category', (req, res, next) => {  

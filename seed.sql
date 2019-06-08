@@ -3,10 +3,10 @@ CREATE DATABASE  switchit;
 
 \c switchit;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS clothes;
-DROP TABLE IF EXISTS favorites;
-DROP TABLE IF EXISTS outfits;
+-- DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS clothes;
+-- DROP TABLE IF EXISTS favorites;
+-- DROP TABLE IF EXISTS outfits;
 
 
 CREATE TABLE users (
@@ -25,7 +25,8 @@ style VARCHAR NOT NULL,
 color VARCHAR NOT NULL,
 season VARCHAR NOT NULL,
 user_id INT REFERENCES users (id) NOT NULL, --unique
-img_url VARCHAR NOT NULL);   --delete and add to outfits table
+img_url VARCHAR NOT NULL
+);   --delete and add to outfits table
 
 
 CREATE TABLE favorites (
@@ -38,7 +39,15 @@ CREATE TABLE outfits (
   id SERIAL PRIMARY KEY,
   top_id INT REFERENCES clothes (id) NOT NULL,
   bottom_id INT REFERENCES clothes (id) NOT NULL,
-  descriptions VARCHAR NOT NULL);
+  descriptions VARCHAR NOT NULL
+  );
+
+CREATE TABLE ootd(
+  id SERIAL PRIMARY KEY,
+  clothes_id INT REFERENCES clothes (id),
+  nickname VARCHAR NOT NULL,
+  stamp VARCHAR NOT NULL
+);
 
 INSERT INTO users (uid,firstname,lastname,email,username) VALUES
 ('123abc','Lukas', 'Augustinho','lukas@pursuit.org','singer4Christ'),

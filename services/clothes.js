@@ -1,6 +1,8 @@
 const {db} = require('./dbConnect');
 const ClothesServices = {};
 
+ClothesServices.sum = (a, b) => a + b;
+
 
 //GET all pics
 ClothesServices.renderpics= () => {
@@ -17,37 +19,7 @@ ClothesServices.create = (category,style,color,season,user_id,img_url) => {
 }
 
 //--------------
-// //GET all category
-// ClothesServices.rendercategory= () => {
-//   const sql = `SELECT category
-//   FROM clothes
-//   GROUP BY clothes.category`
-//   return db.any(sql, {});
-// }
-// //GET all color
-// ClothesServices.rendercolor= () => {
-//   const sql = `SELECT color
-//   FROM clothes
-//   GROUP BY clothes.color`
-//   return db.any(sql, {});
-// }
-// //GET all style
-// ClothesServices.renderstyle= () => {
-//   const sql = `SELECT style
-//   FROM clothes
-//   GROUP BY clothes.style`
-//   return db.any(sql, {});
-// }
-// //GET all season
-// ClothesServices.renderseason= () => {
-//   const sql = `SELECT season
-//   FROM clothes
-//   GROUP BY clothes.season`
-//   return db.any(sql, {});
-// }
 
-
-//GET all style by category bottom where bottom or top
 //params
 ClothesServices.renderbottomsbycategory= (category) => {
   const sql = `SELECT * 
@@ -57,7 +29,37 @@ ClothesServices.renderbottomsbycategory= (category) => {
 }
 
 
+ClothesServices.createOotd = (clothes_id, nickname, stamp)=>{
+  const sql =`INSERT INTO
+  ootd (clothes_id, nickname, stamp)
+  VALUES ($[clothes_id], $[nickname], $[stamp])`
+  return db.none(sql, {clothes_id, nickname, stamp})
+}
 
+ClothesServices.updateOotd = (clothes_id,stamp, nickname) =>{
+  const sql = `UPDATE ootd SET stamp=$[stamp] WHERE clothes_id=$[clothes_id] AND nickname=$[nickname]`
+  return db.none(sql, {clothes_id,stamp, nickname})
+
+}
+
+ClothesServices.readOotd = (nickname) =>{
+  const sql = `SELECT * 
+  from ootd 
+  INNER JOIN clothes
+  on clothes_id = clothes.id
+  where nickname=$[nickname]`
+  return db.any(sql, {nickname});
+
+}
+
+ClothesServices.readAllOotd = () =>{
+  const sql = `SELECT * 
+  from ootd 
+  INNER JOIN clothes
+  on clothes_id = clothes.id`
+  return db.any(sql, {});
+
+}
 // -------------FOR FILTERING-----------------
 //GET all by a specific style  
 ClothesServices.renderStyleType= (style) => {
