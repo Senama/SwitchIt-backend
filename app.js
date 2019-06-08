@@ -26,7 +26,6 @@ app.use((err, req, res, next) => {
 });
 
 
-
 // -------- ROUTES
 app.get('/', (req, res) => {
   res.json('Hello world');
