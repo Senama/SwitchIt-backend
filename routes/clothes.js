@@ -82,8 +82,6 @@ clothesRouter.get('/readAll', (req, res) => {
 });
 
 
-
-
 //GET all style by category where bottom or top
 //params
 clothesRouter.get('/style/:category', (req, res) => {  
@@ -100,6 +98,19 @@ clothesRouter.get('/style/:category', (req, res) => {
 
 
 // --------------------FOR FILTERING -------------------
+
+//GET with a specific season and all filtered
+clothesRouter.get('/season', (req, res) => {  
+  const {category,style,color,season}=req.query;
+  console.log('q',req.query)
+  ClothesServices.renderSeasonType(category,style,color,season)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
 
 //GET all by a specific style 
 clothesRouter.get('/:style', (req, res) => {  
@@ -126,8 +137,21 @@ clothesRouter.get('/color/:category/:style/:color', (req, res) => {
 });
 
 //GET with a specific season and all filtered
-clothesRouter.get('/season/:category/:style/:color/:season', (req, res) => {  
-  const {category,style,color,season}=req.params;
+// clothesRouter.get('/season/:category/:style/:color/:season', (req, res) => {  
+//   const {category,style,color,season}=req.params;
+//   ClothesServices.renderSeasonType(category,style,color,season)
+//     .then(data => {
+//       res.json(data);
+//     })
+//     .catch(err => {
+//       next(err);
+//     })
+// });
+
+//GET with a specific season and all filtered
+clothesRouter.get('/season', (req, res) => {  
+  const {category,style,color,season}=req.query;
+  console.log('q',req.query)
   ClothesServices.renderSeasonType(category,style,color,season)
     .then(data => {
       res.json(data);
