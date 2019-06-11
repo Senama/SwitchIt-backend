@@ -82,7 +82,6 @@ clothesRouter.get('/readAll', (req, res) => {
 });
 
 
-
 //GET all style by category where bottom or top
 //params
 clothesRouter.get('/style/:category', (req, res) => {  
