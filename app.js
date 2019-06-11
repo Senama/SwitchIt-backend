@@ -7,7 +7,7 @@ const admin = require('./firebase');
 
 //define routes
 const clothesRouter = require('./routes/clothes');
-// const userRoutes = require('./routes/users');
+const userRoutes = require('./routes/users');
 
 const checkFirebaseToken = (req, res, next) => {
   const { token } = req.body;
