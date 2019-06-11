@@ -2,11 +2,25 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const admin = require('./firebase');
 
 
 //define routes
 const clothesRouter = require('./routes/clothes');
+// const userRoutes = require('./routes/users');
 
+const checkFirebaseToken = (req, res, next) => {
+  const { token } = req.body;
+
+  admin.auth().verifyIdToken(token)
+    .then(function(decodedToken) {
+      var uid = decodedToken.uid;
+      next();
+    }).catch(function(error) {
+      // Handle error
+      res.json('ERROR!!!!')
+    });
+}
 
 // -------- MIDDLEWARE
 app.use(cors());
@@ -18,6 +32,7 @@ app.use(bodyParser.json())
 
 
 //routes
+app.use('/user',userRoutes)
 app.use('/clothes', clothesRouter); 
 
 
@@ -34,5 +49,7 @@ app.get('/', (req, res) => {
 app.post('/', clothesRouter)
 
 app.post('/ootd', clothesRouter.ootd)
+
+
 
 module.exports={app}
