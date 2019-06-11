@@ -81,50 +81,6 @@ clothesRouter.get('/readAll', (req, res) => {
     })
 });
 
-//--------------
-// //GET all category
-// clothesRouter.get('/category', (req, res, next) => {  
-//   ClothesServices.rendercategory()
-//     .then(data => {
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
-
-// //GET all color
-// clothesRouter.get('/color', (req, res, next) => {  
-//   ClothesServices.rendercolor()
-//     .then(data => {
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
-
-// //GET all style
-// clothesRouter.get('/style', (req, res, next) => {  
-//   ClothesServices.renderstyle()
-//     .then(data => {
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
-
-// //GET all season
-// clothesRouter.get('/season', (req, res, next) => {  
-//   ClothesServices.renderseason()
-//     .then(data => {
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       next(err);
-//     })
-// });
 
 
 
