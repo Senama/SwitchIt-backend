@@ -1,9 +1,6 @@
 const {db} = require('./dbConnect');
 const ClothesServices = {};
 
-ClothesServices.sum = (a, b) => a + b;
-
-
 //GET all pics
 ClothesServices.renderpics= () => {
   const sql = `SELECT *

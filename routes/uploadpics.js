@@ -1,6 +1,6 @@
-const express=require('express')
+const express=require('express');
 const pictureRouter=express.Router();
-const PicturesServices=require('../services/uploadpics')
+const PicturesServices=require('../services/uploadpics');
 
 
 
