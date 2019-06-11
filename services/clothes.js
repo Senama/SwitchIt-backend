@@ -84,11 +84,17 @@ ClothesServices.renderColorType= (category,style,color) => {
 //GET all by a specific season
 ClothesServices.renderSeasonType= (category,style,color,season) => {
   console.log('SEASON', season)
-  const sql = `SELECT * FROM clothes
-  WHERE category=$[category]
-  AND style=$[style]
-  AND color=$[color]
-  AND season=$[season]`
+  let sql = `SELECT * FROM clothes
+  WHERE category=$[category]`
+  if (style){
+    sql+=`AND style=$[style]`
+  }
+  if (color){
+    sql+=`AND color=$[color]`
+  }
+  if (season){
+    sql+=`AND season=$[season]`
+  }
   return db.any(sql, {category,style,color,season});
 }
 
