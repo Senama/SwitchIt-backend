@@ -61,7 +61,7 @@ clothesRouter.put('/update', (req, res) => {
 });
 
 clothesRouter.get('/read', (req, res) => {  
-  const {nickname}=req.body;
+  const {nickname}=req.params;
   ClothesServices.readOotd(nickname)
     .then(data => {
       res.json(data);
