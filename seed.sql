@@ -70,7 +70,7 @@ INSERT INTO clothes(category, style,color,season,user_id,img_url) VALUES
 ('top', 'sleeve-less','white','summer-spring',2,'http://thecosmo.co.uk/img/p/6/8/2/682-large_default.jpg'),
 ('top', 'sleeve-less','other','summer-spring',2,'https://cdn.shopify.com/s/files/1/0035/7652/9014/products/mockup-663807f9_2000x.png?v=1534968746'),
 ('bottom', 'skirt','red','fall-winter',2,'https://m.media-amazon.com/images/I/71jx94HJQdL._SR500,500_.jpg'),
-('bottom', 'skirt','other','summer-spring',2,'https://dtpmhvbsmffsz.cloudfront.net/posts/2013/08/31/5222b93124a9480619005d36/m_5222b93424a9480619005d39.jpg');
+('bottom', 'skirt','other','summer-spring',2,'https://dtpmhvbsmffsz.cloudfront.net/posts/2013/08/31/5222b93124a9480619005d36/m_5222b93424a9480619005d39.jpg'),
 ('bottom', 'pants','white','summer-spring',1,'https://www.moschino.com/media/catalog/product/cache/0/900x1148/f5f5f5/AEF191Z_03060219-0001-1_1.jpg'),
 ('bottom', 'pants','blue','summer-spring',1,'https://www.moschino.com/us_en/moschino/men/clothing/trousers/fleece-pants-pixel-capsule.html'),
 ('bottom', 'pants','black','fall-winter',1,'https://www.moschino.com/media/catalog/product/cache/0/900x1148/f5f5f5/AEF192Z_03405229-1555-1_1.jpg'),
@@ -110,7 +110,7 @@ INSERT INTO clothes(category, style,color,season,user_id,img_url) VALUES
 ('top', 'long-sleeve','other','fall-winter',1,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwP-iqDC3Zz59F__jTibG3qZos7DMsVgMFwMc3bQrlKIhxe4acWQ'),
 ('top', 'long-sleeve','white','fall-winter',1,'https://s7.landsend.com/is/image/LandsEnd/173824_AG13_LF_WHI?fmt=jpeg%2Crgb&qlt=60%2C1&op_sharpen=0&resMode=sharp2&op_usm=0.5%2C1%2C3%2C0&icc=sRGB%20IEC61966-2.1%2Crelative&iccEmbed=1&wid=690&hei=1035'),
 ('top', 'long-sleeve','blue','summer-spring',1,'https://images-na.ssl-images-amazon.com/images/I/61JUbrOdtPL._UX385_.jpg'),
-('top', 'long-sleeve','red','summer-spring',1,'https://sep.yimg.com/ay/yhst-54326505879580/sp14rd-men-s-red-long-sleeve-industrial-work-shirt-15.jpg'),
+('top', 'long-sleeve','red','summer-spring',1,'https://sep.yimg.com/ay/yhst-54326505879580/sp14rd-men-s-red-long-sleeve-industrial-work-shirt-15.jpg');
 
 
 INSERT INTO outfits (top_id,bottom_id,descriptions) VALUES
