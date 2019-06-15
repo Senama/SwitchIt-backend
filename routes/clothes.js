@@ -50,10 +50,10 @@ clothesRouter.ootd = (req, res)=>{
 
 
 clothesRouter.put('/update', (req, res) => {
-  const {clothes_id,stamp, nickname} = req.body;
-  ClothesServices.updateOotd(clothes_id, stamp, nickname)
+  const {top_id, bottom_id, nickname, stamp} = req.body;
+  ClothesServices.updateOotd(top_id, bottom_id, nickname, stamp)
   .then(() => {
-    res.json({success:`${clothes_id} time updated too: ${stamp}`});
+    res.json({success:`${nickname} time updated too: ${stamp}`});
   })
     .catch(err => {
       res.json(err.toString());
