@@ -34,11 +34,11 @@ clothesRouter.post('/newpic', (req, res, next) => {
 
 //--------------------------------------- OOTD
 clothesRouter.ootd = (req, res)=>{
-  const {clothes_id, nickname, stamp} = req.body;
-  console.log('clothes_id:', clothes_id)
+  const {top_id, bottom_id, nickname, stamp} = req.body;
+  console.log('clothes_id:', top_id)
   console.log('nickname:', nickname)
   console.log('stamp:', stamp)
-  ClothesServices.createOotd(clothes_id, nickname, stamp)
+  ClothesServices.createOotd(top_id, bottom_id, nickname, stamp)
   .then(data =>{
     console.log(data)
     res.json('ootd saved')
@@ -160,4 +160,20 @@ clothesRouter.get('/season', (req, res) => {
       next(err);
     })
 });
+
+
+clothesRouter.get('/time', (req, res) => {  
+  const {now, end}=req.body;
+  console.log('q',req.body)
+  ClothesServices.time(now, end)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      next(err);
+    })
+});
+
+
+
 module.exports=clothesRouter;

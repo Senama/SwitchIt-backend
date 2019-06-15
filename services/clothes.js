@@ -26,16 +26,16 @@ ClothesServices.renderbottomsbycategory= (category) => {
 }
 
 
-ClothesServices.createOotd = (clothes_id, nickname, stamp)=>{
+ClothesServices.createOotd = (top_id, bottom_id, nickname, stamp)=>{
   const sql =`INSERT INTO
-  ootd (clothes_id, nickname, stamp)
-  VALUES ($[clothes_id], $[nickname], $[stamp])`
-  return db.none(sql, {clothes_id, nickname, stamp})
+  ootd (top_id, bottom_id, nickname, stamp)
+  VALUES ($[top_id], $[bottom_id], $[nickname], $[stamp])`
+  return db.none(sql, {top_id, bottom_id, nickname, stamp})
 }
 
-ClothesServices.updateOotd = (clothes_id,stamp, nickname) =>{
-  const sql = `UPDATE ootd SET stamp=$[stamp] WHERE clothes_id=$[clothes_id] AND nickname=$[nickname]`
-  return db.none(sql, {clothes_id,stamp, nickname})
+ClothesServices.updateOotd = (top_id, bottom_id, nickname, stamp) =>{
+  const sql = `UPDATE ootd SET stamp=$[stamp] WHERE top_id=$[top_id] AND nickname=$[nickname]`
+  return db.none(sql, {top_id, bottom_id, nickname, stamp})
 
 }
 
@@ -97,6 +97,19 @@ ClothesServices.renderSeasonType= (category,style,color,season) => {
   }
   return db.any(sql, {category,style,color,season});
 }
+
+
+ClothesServices.time=(now, end)=>{
+
+  let sql = 'SELECT * FROM ootd WHERE stamp BETWEEN $[now] AND $[end]'
+  return db.any(sql, {now, end})
+}
+
+// ClothesServices.oot=(now, end)=>{
+
+//   let sql = 'SELECT * FROM ootd WHERE  BETWEEN $[now] AND $[end]'
+//   return db.any(sql, {now, end})
+// }
 
 
 module.exports = ClothesServices;
