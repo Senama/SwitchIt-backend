@@ -71,8 +71,18 @@ clothesRouter.get('/read', (req, res) => {
     })
 });
 
-clothesRouter.get('/readAll', (req, res) => {  
-  ClothesServices.readAllOotd()
+clothesRouter.get('/readTopAll', (req, res) => {  
+  ClothesServices.readAllTopOotd()
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.json(err)
+    })
+});
+
+clothesRouter.get('/readBottomAll', (req, res) => {  
+  ClothesServices.readAllBottomOotd()
     .then(data => {
       res.json(data);
     })

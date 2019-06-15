@@ -49,16 +49,21 @@ ClothesServices.readOotd = (nickname) =>{
 
 }
 
-ClothesServices.readAllOotd = () =>{
-  const sql = `SELECT ootd.* , 
-  clothes.* FROM ootd 
-  JOIN clothes
-  ON ootd.top_id = clothes.id 
- UNION ALL 
- SELECT ootd.* ,clothes.* from ootd
- JOIN clothes
- ON ootd.bottom_id = clothes.id;`
+ClothesServices.readAllTopOotd = () =>{
+    const sql = `SELECT ootd.* , 
+    clothes.* FROM ootd 
+    JOIN clothes
+    ON ootd.top_id = clothes.id;`
   return db.any(sql, {});
+
+}
+
+ClothesServices.readAllBottomOotd = () =>{
+  const sql = `SELECT ootd.* ,
+  clothes.* from ootd
+  JOIN clothes
+  ON ootd.bottom_id = clothes.id;`
+return db.any(sql, {});
 
 }
 // -------------FOR FILTERING-----------------
